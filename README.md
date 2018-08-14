@@ -1,6 +1,6 @@
 # Custom Badges for Teamspeak 3 Client
 [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/HarpyWar/ts3plugin_mybadges/blob/master/LICENSE-MIT)
-![LuaBadge](https://img.shields.io/badge/Badge-Lua-blue.svg) [![Github Downloads](https://img.shields.io/github/downloads/HarpyWar/ts3plugin_mybadges/total.svg?maxAge=2592000)](https://github.com/HarpyWar/ts3plugin_mybadges/releases)
+![LuaBadge](https://img.shields.io/badge/Badge-Lua-blue.svg) [![Github Downloads](https://img.shields.io/github/downloads/HarpyWar/ts3plugin_mybadges/total.svg)](https://github.com/HarpyWar/ts3plugin_mybadges/releases)
 
 The plugin allows to set any of available badges which will see all users on TS3 server, except you.
 
@@ -21,10 +21,29 @@ If you dont see "Plugins > Lua Plugins" menu item in the main menu then try Disa
 # How to Use
 Connect to a server and choose any badge from the main menu Plugins > Lua Plugin.
 
-You can not see own badges, but other users on the server will see. There is no way to display it on your side.
+You can not see own badges, but other users on the server will see. There is no way to display it on your side, but you can look on yourself from another tab connected to the same server.
 
 Max available badges count at the same time are 3. And +1 badge *Overwolf*.
 
+Available chat commands:
+
+* Show your equip badges
+  ```
+  /lua run mybadges.show
+  ```
+* Remove all badges
+  ```
+  /lua run mybadges.clear
+  ```
+
+* Set badges in desired sequence
+  
+  ```
+  /lua run mybadges.set 1 2 3 0
+  /lua run mybadges.set 1 1 1 0
+  /lua run mybadges.set 16 15 14
+  ```
+  
 ## Dependencies
 * [Lua Plugin](https://www.myteamspeak.com/addons/1ea680fd-dfd2-49ef-a259-74d27593b867)
 * [TS3Hook](https://github.com/ReSpeak/TS3Hook)
