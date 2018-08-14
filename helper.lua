@@ -2,9 +2,7 @@
 	Copyright (C) 2018 HarpyWar (harpywar@gmail.com)
 	
 	This file is a part of the plugin https://github.com/HarpyWar/ts3plugin_mybadges
-	Licensed under the same terms as Lua itself.
 ]]--
-
 
 local MODULE_NAME = "mybadges"
 local filename = ts3.getPluginPath() .. "lua_plugin/" .. MODULE_NAME .. "/savedbadges.txt"
@@ -68,18 +66,18 @@ end
 local function printBadgeList(sid)
 	local printlist = {}
 	local message = "My Badges: "
-	
-	if (enableoverwolf[sid] == 1) then
-		table.insert(printlist, "0")
-	end
+
 	-- display in ts3 to user his badges
 	local displaybadgenames = {}
 	for k = 1, #enabledbadges[sid] do
 		for i = 1, #badgelist do
 			if enabledbadges[sid][k] == badgelist[i][1] then
-				table.insert(printlist, i-2)
+				table.insert(printlist, i-mybadges_offset)
 			end
 		end
+	end	
+	if (enableoverwolf[sid] == 1) then
+		table.insert(printlist, "0")
 	end
 	
 	message = message .. "[" .. table.concat(printlist, ", ") .. "]"
@@ -114,9 +112,10 @@ end
 
 
 mybadges_helper = {
+	show = show,
+
 	saveBadges = saveBadges,
 	loadBadges = loadBadges,
 	printBadgeList = printBadgeList,
 	broadcastBadges = broadcastBadges
 }
-

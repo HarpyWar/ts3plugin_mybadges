@@ -2,12 +2,12 @@
 	Copyright (C) 2018 HarpyWar (harpywar@gmail.com)
 	
 	This file is a part of the plugin https://github.com/HarpyWar/ts3plugin_mybadges
-	Licensed under the same terms as Lua itself.
 ]]--
 
 -- global vars
 badgelist = {
-	{"empty", "(clear badges)", ""},
+	{"show", "(show my badges)", ""},
+	{"clear", "(clear badges)", ""},
 	{"overwolf", "Overwolf", "0.png"},
 	{"1cb07348-34a4-4741-b50f-c41e584370f7", "Creator of TeamSpeak Addons", "1.png"},
 	{"450f81c1-ab41-4211-a338-222fa94ed157", "Creator of at least 1 TeamSpeak Addon", "2.png"},
@@ -29,7 +29,7 @@ badgelist = {
 
 enabledbadges = {}
 enableoverwolf = {}
-
+mybadges_offset = 3 -- offset for menu where badges started
 
 
 

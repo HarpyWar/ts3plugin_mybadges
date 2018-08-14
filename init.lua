@@ -2,7 +2,6 @@
 	Copyright (C) 2018 HarpyWar (harpywar@gmail.com)
 	
 	This file is a part of the plugin https://github.com/HarpyWar/ts3plugin_mybadges
-	Licensed under the same terms as Lua itself.
 ]]--
 
 
@@ -14,9 +13,10 @@
 local MODULE_NAME = "mybadges"
 
 require("ts3init")            -- Required for ts3RegisterModule
-require(MODULE_NAME .. "/helper")  -- Forwarded TeamSpeak 3 callbacks
+require(MODULE_NAME .. "/helper") 
 require(MODULE_NAME .. "/events")  -- Forwarded TeamSpeak 3 callbacks
-require(MODULE_NAME .. "/badgelist")    -- Some demo functions callable from TS3 client chat input
+require(MODULE_NAME .. "/badgelist") 
+require(MODULE_NAME .. "/command")    -- Some functions callable from TS3 client chat input
 
 
 -- Initialize menus. Optional function, if not using menus do not implement this.
@@ -30,7 +30,8 @@ local function createMenus(moduleMenuItemID)
     for i = 1, #badgelist do
 		print(badgelist[i][1])
 		
-		local idx = i-2
+		-- numbers in menu for badges (0. Overwolf, 1. ..)
+		local idx = i-mybadges_offset
 		if idx < 0 then 
 			idx = ""
 		else

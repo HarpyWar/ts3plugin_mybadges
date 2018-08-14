@@ -2,7 +2,6 @@
 	Copyright (C) 2018 HarpyWar (harpywar@gmail.com)
 	
 	This file is a part of the plugin https://github.com/HarpyWar/ts3plugin_mybadges
-	Licensed under the same terms as Lua itself.
 ]]--
 
 --
@@ -47,10 +46,13 @@ local function onMenuItemEvent(sid, menuType, menuItemID, selectedItemID)
 		enableoverwolf[sid] = 0
 	end
 	
-
-	if (guid == "empty") then
+	-- clear
+	if (guid == "clear") then
 		enabledbadges[sid] = {}
 		enableoverwolf[sid] = 0
+	-- do nothing
+	elseif (guid == "show") then
+		
 	-- overwolf
 	elseif (guid == "overwolf") then
 		if enableoverwolf[sid] == 0 then
