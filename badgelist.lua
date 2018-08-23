@@ -25,6 +25,9 @@ badgelist = {
 	{"935e5a2a-954a-44ca-aa7a-55c79285b601", "Discovered at E3 2018", "14.png"},
 	{"64221fd1-706c-4bb2-ba55-996c39effa79", "MyTeamSpeak early adopter", "15.png"},
 	{"c3f823eb-5d5c-40f9-9dbd-3437d59a539d", "New MyTeamSpeak member", "16.png"},
+	{"4eef1ecf-a0ea-423d-bfd0-496543a00305", "Found Tim Speak at Gamescom 2018", "16.png"},
+	{"24512806-f886-4440-b579-9e26e4219ef6", "Gamescom Exclusive Gaming Hero 2018", "16.png"},
+	{"b9c7d6ad-5b99-40fb-988c-1d02ab6cc130", "Found Tim Speak at Gamescom 2018", "16.png"},
 }
 
 enabledbadges = {}
