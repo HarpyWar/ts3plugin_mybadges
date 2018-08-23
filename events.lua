@@ -11,18 +11,18 @@
 -- Will store factor to add to menuID to calculate the real menuID used in the TeamSpeak client (to support menus from multiple Lua modules)
 -- Add this value to above menuID when passing the ID to setPluginMenuEnabled. See demo.lua for an example.
 local moduleMenuItemID = 0
+require("ts3defs")
 
 
 
+local function onConnectStatusChangeEvent(serverConnectionHandlerID, status, errorNumber)
 
-local function onConnectStatusChangeEvent(sid, status, errorNumber)
-
-	print("TestModule: onConnectStatusChangeEvent: " .. sid .. " " .. status .. " " .. errorNumber)
+	print("TestModule: onConnectStatusChangeEvent: " .. serverConnectionHandlerID .. " " .. status .. " " .. errorNumber)
 
 	if (status == 4) then
-		-- set badges on connect from the file and print
-		mybadges_helper.loadBadges()
-		mybadges_helper.broadcastBadges(sid)
+		local sid = ts3.getServerVariableAsString(serverConnectionHandlerID, ts3defs.VirtualServerProperties.VIRTUALSERVER_UNIQUE_IDENTIFIER)
+
+		mybadges_helper.broadcastBadges(serverConnectionHandlerID)
 		-- print to user
 		mybadges_helper.printBadgeList(sid)
 	end
@@ -38,7 +38,9 @@ end
 --  menuItemID: Id used when creating the menu item
 --  selectedItemID: Channel or Client ID in the case of PLUGIN_MENU_TYPE_CHANNEL and PLUGIN_MENU_TYPE_CLIENT. 0 for PLUGIN_MENU_TYPE_GLOBAL.
 --
-local function onMenuItemEvent(sid, menuType, menuItemID, selectedItemID)
+local function onMenuItemEvent(serverConnectionHandlerID, menuType, menuItemID, selectedItemID)
+	local sid = ts3.getServerVariableAsString(serverConnectionHandlerID, ts3defs.VirtualServerProperties.VIRTUALSERVER_UNIQUE_IDENTIFIER)
+
 	local guid = badgelist[menuItemID][1];
 
 	if enabledbadges[sid] == nil then
@@ -86,7 +88,7 @@ local function onMenuItemEvent(sid, menuType, menuItemID, selectedItemID)
 		end
 	end
 
-	mybadges_helper.broadcastBadges(sid)
+	mybadges_helper.broadcastBadges(serverConnectionHandlerID)
 	-- print to user
 	mybadges_helper.printBadgeList(sid)
 	mybadges_helper.saveBadges()

@@ -3,15 +3,16 @@
 	
 	This file is a part of the plugin https://github.com/HarpyWar/ts3plugin_mybadges
 ]]--
+require("ts3defs")
 
 -- Run with "/lua run mybadges.clear"
-local function clear(sid)
-	mybadges_events.onMenuItemEvent(sid, nil, 2, nil)
+local function clear(serverConnectionHandlerID)
+	mybadges_events.onMenuItemEvent(serverConnectionHandlerID, nil, 2, nil)
 end
 
 -- Run with "/lua run mybadges.show"
-local function show(sid)
-	mybadges_events.onMenuItemEvent(sid, nil, 1, nil)
+local function show(serverConnectionHandlerID)
+	mybadges_events.onMenuItemEvent(serverConnectionHandlerID, nil, 1, nil)
 end
 
 
@@ -33,7 +34,9 @@ end
 
 
 -- Run with "/lua run mybadges.set 1 1 16 0"
-local function set(sid, badge1, badge2, badge3, badge4)
+local function set(serverConnectionHandlerID, badge1, badge2, badge3, badge4)
+	local sid = ts3.getServerVariableAsString(serverConnectionHandlerID, ts3defs.VirtualServerProperties.VIRTUALSERVER_UNIQUE_IDENTIFIER)
+
 	-- clear
 	enabledbadges[sid] = {}
 	enableoverwolf[sid] = 0
@@ -52,7 +55,7 @@ local function set(sid, badge1, badge2, badge3, badge4)
 		set_badge(sid, badge4, 4)
 	end
 	
-	show(sid)
+	show(serverConnectionHandlerID)
 end
 
 

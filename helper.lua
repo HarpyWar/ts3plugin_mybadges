@@ -16,7 +16,12 @@ local function serializeTable(val, name, skipnewlines, depth)
     if name and depth > 1 then 
     	if not string.match(name, '^[a-zA-z_][a-zA-Z0-9_]*$') then
     		name = string.gsub(name, "'", "\\'")
-    		name = "[".. name .. "]"
+			-- server identifier must be in quotes, but others are numbers - without quotes
+			if depth == 2 then
+				name = "[\"".. name .. "\"]"
+			else
+				name = "[".. name .. "]"
+			end
     	end
     	tmp = tmp .. name .. " = "
     end
@@ -55,15 +60,19 @@ end
 
 
 
-local function broadcastBadges(sid)
-	local displaybadges = table.concat(enabledbadges[1], ",")
-	ts3.requestSendServerTextMsg(sid, "~cmdclientupdate~sclient_badges=overwolf=" .. enableoverwolf[sid] .. ":badges=" .. displaybadges)
+local function broadcastBadges(serverConnectionHandlerID)
+	local sid = ts3.getServerVariableAsString(serverConnectionHandlerID, ts3defs.VirtualServerProperties.VIRTUALSERVER_UNIQUE_IDENTIFIER)
+
+	
+	local displaybadges = table.concat(enabledbadges[sid], ",")
+	ts3.requestSendServerTextMsg(serverConnectionHandlerID, "~cmdclientupdate~sclient_badges=overwolf=" .. enableoverwolf[sid] .. ":badges=" .. displaybadges)
 end
 
 
 -- print to user in current tab 
 -- "My Badges: 4, 14"
 local function printBadgeList(sid)
+
 	local printlist = {}
 	local message = "My Badges: "
 

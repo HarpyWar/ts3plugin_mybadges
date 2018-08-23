@@ -39,6 +39,11 @@ local function createMenus(moduleMenuItemID)
 		end
         table.insert(menus, {ts3defs.PluginMenuType.PLUGIN_MENU_TYPE_GLOBAL, i,  idx .. badgelist[i][2], MODULE_NAME .. "/icons/" .. badgelist[i][3]} )
     end
+	
+
+	-- load badges from file
+	mybadges_helper.loadBadges()
+	
 	return menus
 end
 
