@@ -28,6 +28,7 @@ badgelist = {
 	{"4eef1ecf-a0ea-423d-bfd0-496543a00305", "Visited TeamSpeak at Gamescom 2018", "17.png"},
 	{"24512806-f886-4440-b579-9e26e4219ef6", "Gamescom Exclusive Gaming Hero 2018", "18.png"},
 	{"b9c7d6ad-5b99-40fb-988c-1d02ab6cc130", "Found Tim Speak at Gamescom 2018", "19.png"},
+	{"6b187e83-873b-46b0-b2c2-a31af15e76a4", "TeamSpeak Merch Owner - 1st Edition", "20.png"},
 }
 
 enabledbadges = {}
