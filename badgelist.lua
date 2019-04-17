@@ -31,6 +31,7 @@ badgelist = {
 	{"6b187e83-873b-46b0-b2c2-a31af15e76a4", "TeamSpeak Merch Owner - 1st Edition", "20.png"},
 	{"4b0fd4f5-d456-4294-973d-853a1db5c7d8", "Valentim's Day 2019", "21.png"},
 	{"9cd152a7-bf65-4ece-aeba-62d27678f79a", "TS5 Beta Competition Winner", "22.png"},
+	{"22b9ec39-7694-453e-864c-dfc7b1b0d7c7", "TeamSpeak Merch Owner - 2nd Edition", "23.png"},
 }
 
 enabledbadges = {}
